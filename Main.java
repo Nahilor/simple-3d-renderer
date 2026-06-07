@@ -6,11 +6,18 @@
 
     Resources used: https://www.geeksforgeeks.org/java/introduction-to-java-swing/
                     https://beginnersbook.com/2016/09/swing-borderlayout-in-java/
+                    https://youtu.be/yRwQ7A6jVLk?si=By65dXSvtksMCxdx Matrices
+                    https://youtu.be/vzt9c7iWPxs?si=TOQ86q2IAes74p_J Matrix multiplication
+                    https://youtu.be/EZufiIwwqFA?si=_fYYpR8_IWPzAlHT Rotation
+                    https://youtu.be/BKsZrkI6sro?si=hqzYkazhZAoiHXHJ 3d rotation
 
 */
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Path2D;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -41,8 +48,37 @@ public class Main {
                 g2.fillRect(0, 0, getWidth(), getHeight());
 
                 // Render logic will be here
+                List<Triangle> tetrahedron = new ArrayList<>();
+                tetrahedron.add(new Triangle(new Vertex(100, 100, 100),
+                                    new Vertex(-100, -100, 100),
+                                    new Vertex(-100, 100, -100),
+                                    Color.WHITE));
+                tetrahedron.add(new Triangle(new Vertex(100, 100, 100),
+                                    new Vertex(-100, -100, 100),
+                                    new Vertex(100, -100, -100),
+                                    Color.RED));
+                tetrahedron.add(new Triangle(new Vertex(-100, 100, -100),
+                                    new Vertex(100, -100, -100),
+                                    new Vertex(100, 100, 100),
+                                    Color.GREEN));
+                tetrahedron.add(new Triangle(new Vertex(-100, 100, -100),
+                                    new Vertex(100, -100, -100),
+                                    new Vertex(-100, -100, 100),
+                                    Color.BLUE));
 
 
+                // this is ignoring the z axis
+                g2.translate(getWidth() / 2, getHeight() / 2); // Moves the origin (0,0) point to the center of the panel
+                // This makes the 3D shape render from the middle of the window instead of the top-left corner
+                g2.setColor(Color.WHITE);
+                for (Triangle t : tetrahedron) {
+                    Path2D path = new Path2D.Double();
+                    path.moveTo(t.v1.x, t.v1.y); // moves the pen to the specified point
+                    path.lineTo(t.v2.x, t.v2.y); // draws a line from vertex1(Point1) to vertex2(Point2)
+                    path.lineTo(t.v3.x, t.v3.y); // same from the current location of the pen to the specified point
+                    path.closePath(); // this automatically closes the path back the first vertex
+                    g2.draw(path); // This renders the lines. Here there is no z axis it is just orthogonal view
+                }
             }
         };
         pane.add(renderViewPanel, BorderLayout.CENTER);
