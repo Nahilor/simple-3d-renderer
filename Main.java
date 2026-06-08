@@ -39,6 +39,25 @@ public class Main {
         JSlider verticalSlider = new JSlider(SwingConstants.VERTICAL,0, 360, 180);
         pane.add(verticalSlider, BorderLayout.EAST);
 
+        // Render logic will be here
+        List<Triangle> tetrahedron = new ArrayList<>();
+        tetrahedron.add(new Triangle(new Vertex(100, 100, 100),
+                            new Vertex(-100, -100, 100),
+                            new Vertex(-100, 100, -100),
+                            Color.WHITE));
+        tetrahedron.add(new Triangle(new Vertex(100, 100, 100),
+                            new Vertex(-100, -100, 100),
+                            new Vertex(100, -100, -100),
+                            Color.RED));
+        tetrahedron.add(new Triangle(new Vertex(-100, 100, -100),
+                            new Vertex(100, -100, -100),
+                            new Vertex(100, 100, 100),
+                            Color.GREEN));
+        tetrahedron.add(new Triangle(new Vertex(-100, 100, -100),
+                            new Vertex(100, -100, -100),
+                            new Vertex(-100, -100, 100),
+                            Color.BLUE));
+
         // Panel to show the render
         JPanel renderViewPanel = new JPanel() {
             @Override
@@ -47,24 +66,7 @@ public class Main {
                 g2.setColor(Color.BLACK);
                 g2.fillRect(0, 0, getWidth(), getHeight());
 
-                // Render logic will be here
-                List<Triangle> tetrahedron = new ArrayList<>();
-                tetrahedron.add(new Triangle(new Vertex(100, 100, 100),
-                                    new Vertex(-100, -100, 100),
-                                    new Vertex(-100, 100, -100),
-                                    Color.WHITE));
-                tetrahedron.add(new Triangle(new Vertex(100, 100, 100),
-                                    new Vertex(-100, -100, 100),
-                                    new Vertex(100, -100, -100),
-                                    Color.RED));
-                tetrahedron.add(new Triangle(new Vertex(-100, 100, -100),
-                                    new Vertex(100, -100, -100),
-                                    new Vertex(100, 100, 100),
-                                    Color.GREEN));
-                tetrahedron.add(new Triangle(new Vertex(-100, 100, -100),
-                                    new Vertex(100, -100, -100),
-                                    new Vertex(-100, -100, 100),
-                                    Color.BLUE));
+                
 
 
                 // rotation
