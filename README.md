@@ -63,7 +63,6 @@ This project incorporates concepts from the following resources:
 - [Matrix Multiplication](https://youtu.be/vzt9c7iWPxs?si=TOQ86q2IAes74p_J)
 - [3D Rotation Mathematics](https://youtu.be/BKsZrkI6sro?si=hqzYkazhZAoiHXHJ)
 - [Barycentric Coordinate System](https://en.wikipedia.org/wiki/Barycentric_coordinate_system)
-- [Triangle-Based Graphics](https://ericsink.com/wpf3d/5_Triangles.html)
 
 ## Future Enhancements
 
